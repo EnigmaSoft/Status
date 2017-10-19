@@ -1,0 +1,15 @@
+{
+    "name": "enigmasoft/status",
+    "description": "Implements Server Status functionality to EnigmaCMS",
+    "license": "CC-BY-NC-4.0",
+    "authors": [
+        {
+            "name": "Snopboy",
+            "email": "snopboy@localhost.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "illuminate/support": "^5.5"
+    }
+}
