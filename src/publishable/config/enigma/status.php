@@ -41,6 +41,20 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Status Display
+    |--------------------------------------------------------------------------
+    |
+    | Define the Cache Expiration time for the Status results to be stored
+    | Before requesting a Status Update.
+    | 
+    | Accepts: [circle|label|text]
+    | Default: '30 seconds'
+    */
+
+    'display' => 'circle',
+
+    /*
+    |--------------------------------------------------------------------------
     | GameServer IP
     |--------------------------------------------------------------------------
     |

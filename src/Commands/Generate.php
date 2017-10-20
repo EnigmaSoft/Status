@@ -38,6 +38,7 @@ class Generate extends Command
      */
     public function handle()
     {
-        $this->info(StatusController::generateServerStatus());
+        StatusController::generateServerStatus();
+        $this->info('Status Checked!');
     }
 }
