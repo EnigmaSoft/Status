@@ -11,5 +11,10 @@
     "minimum-stability": "dev",
     "require": {
         "illuminate/support": "^5.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Enigma\\Status\\": "packages/enigmasoft/status/src"
+        }
     }
 }
