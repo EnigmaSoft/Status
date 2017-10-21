@@ -41,7 +41,18 @@ class StatusServiceProvider extends ServiceProvider
         $this->app->bind('status', function() {
             return new StatusController;
         });
+        $this->app->alias('status', StatusController::class);
         $this->commands($this->commands);
         //$this->app->make('Enigma\Status\Controllers\StatusController');
+    }
+
+    /**
+     * Get the services provided by the provider.
+     *
+     * @return array
+     */
+    public function provides()
+    {
+        return ['status', StatusController::class];
     }
 }
