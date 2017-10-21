@@ -14,7 +14,19 @@
     },
     "autoload": {
         "psr-4": {
-            "Enigma\\Status\\": "packages/enigmasoft/status/src"
+            "Enigma\\Status\\": "src/"
         }
-    }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Enigma\\Status\\StatusServiceProvider"
+            ],
+            "aliases": {
+                "Status": "Enigma\\Status\\Facades\\StatusFacade"
+            }
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
