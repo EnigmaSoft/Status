@@ -5,7 +5,7 @@
 @section('page_title', 'Server Status')
 
 @section('content')
-    <h2 class="text-center" style="margin-bottom: 0px;">{{ config('server.world_name', 'Tespia') }} {!! $world_status ? '<span class="label label-success font-10" style="display: inline-block;vertical-align: middle;">ONLINE</span>' : '<span class="label label-danger font-10" style="display: inline-block;vertical-align: middle;">OFFLINE</span>' !!}</h2><hr style="margin-top: 0px;" />
+    <h2 class="text-center">{{ config('server.world_name', 'Tespia') }} {!! $world_status ? '<span class="label label-success font-10" style="display: inline-block;vertical-align: middle;">ONLINE</span>' : '<span class="label label-danger font-10" style="display: inline-block;vertical-align: middle;">OFFLINE</span>' !!}</h2><hr style="margin-top: 0px;" />
 
     <div style="width:100%;display:block;overflow:hidden;">
         @foreach ($channel as $ch => $status)
