@@ -1,4 +1,7 @@
 <?php
 
 // Status Routes
-Route::get('status', 'Enigma\Status\Controllers\PageController@show')->middleware('web')->name('status');
+Route::get('theme', function ()
+{
+    return 'Theme';
+});

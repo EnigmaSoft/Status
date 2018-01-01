@@ -1,10 +1,10 @@
 <?php
 
-namespace Enigma\Status\Facades;
+namespace Enigma\Theme\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
-class StatusFacade extends Facade
+class ThemeFacade extends Facade
 {
     /**
      * Get the registered name of the component.
@@ -13,6 +13,6 @@ class StatusFacade extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return 'status';
+        return 'theme';
     }
 }
