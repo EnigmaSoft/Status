@@ -1,29 +1,29 @@
 {
-    "name": "enigmasoft/theme",
-    "description": "Implements Theme functionality for EnigmaCMS",
+    "name": "enigmasoft/status",
+    "description": "Implements Server Status functionality to EnigmaCMS",
     "license": "CC-BY-NC-4.0",
-    "authors": [{
-        "name": "Snopboy",
-        "email": "snopboy@localhost.com"
-    }],
+    "authors": [
+        {
+            "name": "Snopboy",
+            "email": "snopboy@localhost.com"
+        }
+    ],
+    "minimum-stability": "dev",
     "require": {
         "illuminate/support": "^5.5"
     },
     "autoload": {
-        "files": [
-            "src/Helpers.php"
-        ],
         "psr-4": {
-            "Enigma\\Theme\\": "src/"
+            "Enigma\\Status\\": "src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Enigma\\Theme\\ThemeServiceProvider"
+                "Enigma\\Status\\StatusServiceProvider"
             ],
             "aliases": {
-                "Theme": "Enigma\\Theme\\Facades\\ThemeFacade"
+                "Status": "Enigma\\Status\\Facades\\StatusFacade"
             }
         }
     },
