@@ -5,9 +5,9 @@ namespace Enigma\Status\Controllers;
 //use Status;
 use Exception;
 use Enigma\Status\Controllers\StatusController as Status;
-use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Routing\Controller;
 
-class PageController extends BaseController
+class PageController extends Controller
 {
 
     /**
@@ -23,6 +23,7 @@ class PageController extends BaseController
             return view('pages.disabled')->with(compact('title'));
         }
 
+        Status::getServerStatus();
         $status = json_decode(Status::loadFromCache());
         $world_status = $status->world;
         $channel = $status->channels;

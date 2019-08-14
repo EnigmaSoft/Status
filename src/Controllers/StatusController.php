@@ -4,7 +4,7 @@ namespace Enigma\Status\Controllers;
 
 use Exception;
 use Illuminate\Support\Facades\Storage;
-use App\Models\User;
+use App\User;
 
 class StatusController
 {
@@ -20,6 +20,7 @@ class StatusController
      * 
      */
     protected static $_cachedStatus = null;
+    protected static $source = null;
 
     
     /**
@@ -101,12 +102,14 @@ class StatusController
         {
             if (static::cacheExists())
             {
-                if (strtotime('-'.config('enigma.status.cache_expiry', '5 minutes')) < static::getCacheTime())
+                if (now()->subMinute()->lessThan(new \Carbon\Carbon(static::getCacheTime())))
                 {
+                    static::$source = 'load from cache';
                     static::$_cachedStatus = static::loadFromCache();
                 }
                 else
                 {
+                    static::$source = 'regenerate';
                     static::$_cachedStatus = static::generateServerStatus();
                 }
             }
@@ -141,7 +144,11 @@ class StatusController
 
         $status = [
             'world' => $world_socket,
-            'channels' => $channel_socket
+            'channels' => $channel_socket,
+            'time' => now(),
+            'cachetime' => (new \Carbon\Carbon(static::getCacheTime())),
+            'source' => static::$source,
+            'older' => now()->subMinute()->greaterThan(new \Carbon\Carbon(static::getCacheTime()))
         ];
 
         static::storeCache(json_encode($status));
