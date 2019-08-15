@@ -3,6 +3,7 @@
 namespace Enigma\Status\Controllers;
 
 use Exception;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
 use App\User;
 
@@ -78,7 +79,15 @@ class StatusController
             }
             else
             {
-                static::$_cachedStatus = json_decode(static::loadFromCache());
+                if (self::cacheExists())
+                {
+                    static::$_cachedStatus = json_decode(static::loadFromCache());
+                }
+                else
+                {
+                    static::$_cachedStatus = static::generateServerStatus();
+                }
+                
                 $socket = static::$_cachedStatus->world;
                 //$socket = json_decode(self::getServerStatus())->world;
             }
@@ -102,7 +111,7 @@ class StatusController
         {
             if (static::cacheExists())
             {
-                if (now()->subMinute()->lessThan(new \Carbon\Carbon(static::getCacheTime())))
+                if (now()->subMinute()->lessThan(new Carbon(static::getCacheTime())))
                 {
                     static::$source = 'load from cache';
                     static::$_cachedStatus = static::loadFromCache();
@@ -146,9 +155,9 @@ class StatusController
             'world' => $world_socket,
             'channels' => $channel_socket,
             'time' => now(),
-            'cachetime' => (new \Carbon\Carbon(static::getCacheTime())),
+            'cachetime' => now(),
             'source' => static::$source,
-            'older' => now()->subMinute()->greaterThan(new \Carbon\Carbon(static::getCacheTime()))
+            'older' => now()->subMinute()->greaterThan(now())
         ];
 
         static::storeCache(json_encode($status));
