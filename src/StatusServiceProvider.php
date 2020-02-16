@@ -27,10 +27,10 @@ class StatusServiceProvider extends ServiceProvider
             __DIR__ . '/publishable/config/enigma' => config_path('enigma'),
             __DIR__.'/publishable/resources/views' => resource_path('views/vendor/status')
         ]);
-		view()->composer('*', function () {
+		/*view()->composer('*', function () {
 			View::share('server', $app['status']->getServerStatus()->world);
 			View::share('count', $app['status']->StatusOrCount());
-		});
+		});*/
     }
 
     /**
