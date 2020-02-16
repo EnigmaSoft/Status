@@ -27,7 +27,10 @@ class StatusServiceProvider extends ServiceProvider
             __DIR__.'/publishable/resources/views' => resource_path('views/vendor/status')
         ]);
 		view()->composer('status', function () {
-			return app('status');
+			return [
+				'server' => $app['status']->getServerStatus()->world,
+				'count' => $app['status']->StatusOrCount()
+			];
 		});
     }
 
