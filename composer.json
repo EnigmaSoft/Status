@@ -10,8 +10,8 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "illuminate/support": "^5.5",
-        "nesbot/carbon": "^1.26.3 || ^2.0"
+        "illuminate/support": "^6.2",
+        "nesbot/carbon": "^1.26.3 || ^2"
     },
     "autoload": {
         "psr-4": {
