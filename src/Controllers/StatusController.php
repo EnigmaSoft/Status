@@ -111,7 +111,7 @@ class StatusController
         {
             if (static::cacheExists())
             {
-                if (now()->subMinute()->lessThan((new Carbon(static::getCacheTime()))->addMinutes(config('enigma.status.cache_expiry'))))
+                if (now()->subMinutes(config('enigma.status.cache_expiry'))->lessThan((new Carbon(static::getCacheTime()))))
                 {
                     static::$source = 'load from cache';
                     static::$_cachedStatus = static::loadFromCache();
